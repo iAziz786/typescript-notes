@@ -36,3 +36,20 @@ In second way we use generic array type, `Array<elemType>`:
 ```ts
 let list: Array<number> = [1, 2, 3];
 ```
+### Tuple
+Array of fixed elements with fixed types.
+```ts
+let x: [string, number];
+
+x = ["Bottle", 10]; // OK
+
+x = [10, "Bottle"]; // Error
+```
+When accessing element outside the known index, The union of the type can be used.
+```ts
+x[3] = "World" // Ok, 'string' can be assign to 'string' | 'nubmer'
+
+console.log(x[5].toSring()) // Ok, 'string' and 'number' both have method 'toString'
+
+x[6] = false // Error, 'boolean' isn't 'string' | 'number'
+```
